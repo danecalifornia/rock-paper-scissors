@@ -13,9 +13,10 @@ function computerPlay() {
 
 // function that represents a single round played
 function playRound(playerSelection, computerSelection) {
-
+  // ensures that the player selection is lowercase
+  playerSelection = playerSelection.toLowerCase();
   // if the player and the computer choose the same value, send a tie message and try again
-    if (playerSelection == computerSelection) {
+  if (playerSelection == computerSelection) {
     // if both selections are the same, it's a tie with no winner.
     console.log(`It's a tie! You both chose ${computerSelection}. Try again.`);
     // lists all ways a user can lose
@@ -29,4 +30,8 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-playRound("rocK", "rock");
+playRound("rock", computerPlay());
+
+//    else if (playerSelection != "rock" || "paper" || "scissors") {
+//      console.log(`${playerSelection} is not an option. Please choose rock, paper, or scissors.`)
+//    }
