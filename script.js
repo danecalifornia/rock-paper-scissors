@@ -1,6 +1,5 @@
-
 // function that randomly returns the word rock, paper, or scissors
-function computerPlay () {
+function computerPlay() {
   // creates an array that holds the 3 options; rock, paper, scissors
   let myArray = ["rock", "paper", "scissors"];
   // chooses a option from the array at random
@@ -11,3 +10,23 @@ function computerPlay () {
   // returns an array value that corrosponds with the random number choice
   return myArray[randomChoice];
 }
+
+// function that represents a single round played
+function playRound(playerSelection, computerSelection) {
+
+  // if the player and the computer choose the same value, send a tie message and try again
+    if (playerSelection == computerSelection) {
+    // if both selections are the same, it's a tie with no winner.
+    console.log(`It's a tie! You both chose ${computerSelection}. Try again.`);
+    // lists all ways a user can lose
+  } else if (playerSelection == "rock" && computerSelection == "paper" ||
+    playerSelection == "scissors" && computerSelection == "rock" ||
+    playerSelection == "paper" && computerSelection == "scissors") {
+    console.log(`You Lose! ${computerSelection} beats ${playerSelection}.`);
+    // user wins if none of the above are true
+  } else {
+    console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
+  }
+}
+
+playRound("rocK", "rock");
