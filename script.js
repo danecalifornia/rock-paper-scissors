@@ -18,20 +18,32 @@ function playRound(playerSelection, computerSelection) {
   // if the player and the computer choose the same value, send a tie message and try again
   if (playerSelection == computerSelection) {
     // if both selections are the same, it's a tie with no winner.
-    console.log(`It's a tie! You both chose ${computerSelection}. Try again.`);
+    // assign variable for result message
+    let result = `It's a tie! You both chose ${computerSelection}. Try again.`;
+    return result;
     // lists all ways a user can lose
   } else if (playerSelection == "rock" && computerSelection == "paper" ||
     playerSelection == "scissors" && computerSelection == "rock" ||
     playerSelection == "paper" && computerSelection == "scissors") {
-    console.log(`You Lose! ${computerSelection} beats ${playerSelection}.`);
+    // re-assign variable for result message
+    let result = `You Lose! ${computerSelection} beats ${playerSelection}.`;
+    return result;
     // user wins if none of the above are true
   } else {
-    console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
+    // re-assign variable for result message
+    let result = `You win! ${playerSelection} beats ${computerSelection}.`;
+    return result;
   }
 }
 
-playRound("rock", computerPlay());
+let playerSelection = "paper";
+let computerSelection = computerPlay();
+// use console.log to see the returned results
+console.log(playRound(playerSelection, computerSelection));
 
+
+
+//                        scratch code here
 //    else if (playerSelection != "rock" || "paper" || "scissors") {
 //      console.log(`${playerSelection} is not an option. Please choose rock, paper, or scissors.`)
 //    }
