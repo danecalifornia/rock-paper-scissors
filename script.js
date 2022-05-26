@@ -1,15 +1,35 @@
 // global variables needed in multiple parts of the program
 let computerScore = 0; // computer's current score
 let playerScore = 0; // players current score
-let playerSelection = playerPlay(); // prompts player for a choice and stores as playerSelection
-playerSelection = playerSelection.toLowerCase(); // makes the players selection lowercase
+let playerSelection = ""; // prompts player for a choice and stores as playerSelection
+// playerSelection = playerSelection.toLowerCase(); // makes the players selection lowercase
 let computerSelection = computerPlay(); // makes the computers random choice variable computerSelection
 
+// NEW CODE HERE 5/26/22
+let rockButton = document.querySelector("#rock");
+rockButton.addEventListener('click', () => {
+  // playerSelection = "rock";
+  playRound("rock", computerPlay());
+});
+
+let paperButton = document.querySelector("#paper");
+paperButton.addEventListener('click', () => {
+  // playerSelection = "paper";
+  playRound("paper", computerPlay());
+});
+
+let scissorsButton = document.querySelector("#scissors");
+scissorsButton.addEventListener('click', () => {
+  // playerSelection = "scissors";
+  playRound("scissors", computerPlay());
+});
+// NEW CODE END
+
 // function that prompts the player for a selection and returns it
-function playerPlay() {
-  playerChoice = prompt("What is your choice?", "");
-  return playerChoice;
-}
+/* function playerPlay() {
+   playerChoice = prompt("What is your choice?", "");
+   return playerChoice.toLowerCase();
+} */
 
 // function that randomly returns the word rock, paper, or scissors from computer
 function computerPlay() {
@@ -63,7 +83,7 @@ function keepPlaying(playerScore, computerScore) {
   if (playerScore == 5 || computerScore == 5) {
     declareWinner(); // if either player makes it to 5, declare a winner
   } else {
-    playRound(playerPlay(), computerPlay()); // otherwise, play again with playRound()
+    return; // otherwise, play again with playRound() before was playRound(playerPlay(), computerPlay());
   }
 }
 
@@ -79,14 +99,14 @@ function playAgain() {
   if (response == "yes") { // if response is yes, score counts are reset to zero and playRound function is called
     playerScore = 0;
     computerScore = 0;
-    playRound(playerPlay(), computerPlay());
+    return;
   } else { // if user inputs anything else an alert thanks them for playing
     alert("Thanks for playing! Until next time.");
   }
 }
 
 // starts the game
-console.log(playRound(playerSelection, computerSelection));
+// console.log(playRound(playerSelection, computerSelection));
 
 
 
