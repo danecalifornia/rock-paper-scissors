@@ -23,6 +23,17 @@ scissorsButton.addEventListener('click', () => {
   // playerSelection = "scissors";
   playRound("scissors", computerPlay());
 });
+
+const resultsContainer = document.querySelector('.results');
+const content = document.createElement('div');
+
+const scoreContainer = document.querySelector('.score');
+const scoreContent = document.createElement('div');
+scoreContent.textContent = `${scoreKeeper()}`;
+
+const resetContainer = document.querySelector('.resetbutton');
+const resetContent = document.createElement('button');
+
 // NEW CODE END
 
 // function that prompts the player for a selection and returns it
@@ -48,20 +59,35 @@ function playRound(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
     // assign variable for result message
     let result = `It's a tie! You both chose ${computerSelection}. ${scoreKeeper()}`; // assign variable for result message
-    console.log(result);
+    // console.log(result);
+    content.classList.add('content');
+    content.textContent = `${result}`;
+    resultsContainer.appendChild(content);
+    resultsContainer.style.display = 'flex';
+
     // lists all ways a player can lose
   } else if (playerSelection == "rock" && computerSelection == "paper" ||
     playerSelection == "scissors" && computerSelection == "rock" ||
     playerSelection == "paper" && computerSelection == "scissors") {
     computerScore++; // adds one to the computer's score
     // re-assign variable for result message
-    let result = `You Lose! ${computerSelection} beats ${playerSelection}. ${scoreKeeper()}`;
-    console.log(result);
+    let result = `You Lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}. ${scoreKeeper()}`;
+    // console.log(result);
+    content.classList.add('content');
+    content.textContent = `${result}`;
+    resultsContainer.appendChild(content);
+    resultsContainer.style.display = 'flex';
+
   } else {
     playerScore++; // add one to the players score; if they didn't tie or lose they won
     // re-assign variable for result message
-    let result = `You win! ${playerSelection} beats ${computerSelection}. ${scoreKeeper()}`;
-    console.log(result);
+    let result = `You win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}. ${scoreKeeper()}`;
+    // console.log(result);
+    content.classList.add('content');
+    content.textContent = `${result}`;
+    resultsContainer.appendChild(content);
+    resultsContainer.style.display = 'flex';
+
   }
   keepPlaying(playerScore, computerScore); // function invoked that determines wether a winner is declared or another round is played
 }
@@ -74,8 +100,29 @@ function declareWinner() {
   } else {
     winner = "the computer"; // else, the winner is the computer
   }
-  console.log(`The winner of the game is ${winner}!`); // prints to the console the winner
-  playAgain();
+  content.classList.add('content');
+  content.textContent = `The winner of the game is ${winner}!`;
+
+  resetContent.classList.add('playagain');
+  resetContent.textContent = "play again";
+  // return resultsContainer.appendChild(content);
+  return winnerDisplay();
+  // console.log(`The winner of the game is ${winner}!`); // prints to the console the winner
+  // playAgain();
+}
+// WORK IN PROGRESS winner display and play again display function
+function winnerDisplay(){
+  resultsContainer.appendChild(content);
+  resultsContainer.style.display = 'flex';
+  resetContainer.appendChild(resetContent);
+  resetContainer.style.display = 'flex';
+  resetContent.addEventListener('click', () => {
+    playAgain();
+    resetContainer.style.display = 'none';
+    resultsContainer.style.display = 'none';
+    // resetContainer.remove(resetContent);
+  });
+  // resetContainer.appendChild(resetContent);
 }
 
 // function determines wether the game still needs to be played
@@ -95,15 +142,15 @@ function scoreKeeper() {
 
 // function that gives the user and option to play again
 function playAgain() {
-  let response = prompt("Would you like to play again? Type yes or no", ""); // prompts the user to play again and stores as var response
-  if (response == "yes") { // if response is yes, score counts are reset to zero and playRound function is called
+  // let response = prompt("Would you like to play again? Type yes or no", ""); // prompts the user to play again and stores as var response
+  // if (response == "yes") { // if response is yes, score counts are reset to zero and playRound function is called
     playerScore = 0;
     computerScore = 0;
     return;
-  } else { // if user inputs anything else an alert thanks them for playing
-    alert("Thanks for playing! Until next time.");
-  }
-}
+  } // else { // if user inputs anything else an alert thanks them for playing
+    // alert("Thanks for playing! Until next time.");
+  // }
+// }
 
 // starts the game
 // console.log(playRound(playerSelection, computerSelection));
