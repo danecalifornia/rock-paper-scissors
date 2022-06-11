@@ -28,10 +28,20 @@ h1, h3 {
 .results {
   display: flex;
   justify-content: center;
-  padding: 2em;
+  padding: 1em;
+  padding-bottom: 1.7em;
 }
 
 .resetbutton {
   display: flex;
   justify-content: center;
+  padding: 1em;
+}
+
+.score {
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+  padding-top: 1.7em;
+
 }

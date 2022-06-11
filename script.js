@@ -29,7 +29,11 @@ const content = document.createElement('div');
 
 const scoreContainer = document.querySelector('.score');
 const scoreContent = document.createElement('div');
-scoreContent.textContent = `${scoreKeeper()}`;
+
+scoreContent.textContent = `Score: ${playerScore}:${computerScore}`;
+scoreContainer.appendChild(scoreContent);
+// scoreContent.textContent = `${scoreKeeper()}`;
+// scoreContainer.appendChild(scoreContent);
 
 const resetContainer = document.querySelector('.resetbutton');
 const resetContent = document.createElement('button');
@@ -64,6 +68,9 @@ function playRound(playerSelection, computerSelection) {
     content.textContent = `${result}`;
     resultsContainer.appendChild(content);
     resultsContainer.style.display = 'flex';
+    scoreContent.textContent = `Score: ${playerScore}:${computerScore}`;
+    scoreContainer.appendChild(scoreContent);
+
 
     // lists all ways a player can lose
   } else if (playerSelection == "rock" && computerSelection == "paper" ||
@@ -77,6 +84,9 @@ function playRound(playerSelection, computerSelection) {
     content.textContent = `${result}`;
     resultsContainer.appendChild(content);
     resultsContainer.style.display = 'flex';
+    scoreContent.textContent = `Score: ${playerScore}:${computerScore}`;
+    scoreContainer.appendChild(scoreContent);
+
 
   } else {
     playerScore++; // add one to the players score; if they didn't tie or lose they won
@@ -87,6 +97,9 @@ function playRound(playerSelection, computerSelection) {
     content.textContent = `${result}`;
     resultsContainer.appendChild(content);
     resultsContainer.style.display = 'flex';
+    scoreContent.textContent = `Score: ${playerScore}:${computerScore}`;
+    scoreContainer.appendChild(scoreContent);
+
 
   }
   keepPlaying(playerScore, computerScore); // function invoked that determines wether a winner is declared or another round is played
@@ -146,6 +159,8 @@ function playAgain() {
   // if (response == "yes") { // if response is yes, score counts are reset to zero and playRound function is called
     playerScore = 0;
     computerScore = 0;
+    scoreContent.textContent = `Score: ${playerScore}:${computerScore}`;
+    scoreContainer.appendChild(scoreContent);
     return;
   } // else { // if user inputs anything else an alert thanks them for playing
     // alert("Thanks for playing! Until next time.");
