@@ -62,7 +62,7 @@ function playRound(playerSelection, computerSelection) {
   // if the player and the computer choose the same value, return a tie message and display score
   if (playerSelection == computerSelection) {
     // assign variable for result message
-    let result = `It's a tie! You both chose ${computerSelection}. ${scoreKeeper()}`; // assign variable for result message
+    let result = `It's a tie! You both chose ${computerSelection}.`; // assign variable for result message
     // console.log(result);
     content.classList.add('content');
     content.textContent = `${result}`;
@@ -78,7 +78,7 @@ function playRound(playerSelection, computerSelection) {
     playerSelection == "paper" && computerSelection == "scissors") {
     computerScore++; // adds one to the computer's score
     // re-assign variable for result message
-    let result = `You Lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}. ${scoreKeeper()}`;
+    let result = `You Lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}.`;
     // console.log(result);
     content.classList.add('content');
     content.textContent = `${result}`;
@@ -91,7 +91,7 @@ function playRound(playerSelection, computerSelection) {
   } else {
     playerScore++; // add one to the players score; if they didn't tie or lose they won
     // re-assign variable for result message
-    let result = `You win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}. ${scoreKeeper()}`;
+    let result = `You win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}.`;
     // console.log(result);
     content.classList.add('content');
     content.textContent = `${result}`;
@@ -129,8 +129,17 @@ function winnerDisplay(){
   resultsContainer.style.display = 'flex';
   resetContainer.appendChild(resetContent);
   resetContainer.style.display = 'flex';
+  // when someone wins the game disable the buttons
+  rockButton.disabled = true;
+  paperButton.disabled = true;
+  scissorsButton.disabled = true;
+
   resetContent.addEventListener('click', () => {
     playAgain();
+    // enable buttons when user clicks the play again button
+    rockButton.disabled = false;
+    paperButton.disabled = false;
+    scissorsButton.disabled = false;
     resetContainer.style.display = 'none';
     resultsContainer.style.display = 'none';
     // resetContainer.remove(resetContent);
