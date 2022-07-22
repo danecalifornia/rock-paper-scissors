@@ -42,6 +42,14 @@ h1, h3 {
   display: flex;
   justify-content: center;
   padding: 1em;
-  padding-top: 1.7em;
+  gap: 2em;
 
+}
+
+.scoreword {
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+  padding-top: 2em;
+  font-weight: bolder;
 }

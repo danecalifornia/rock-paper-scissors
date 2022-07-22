@@ -27,13 +27,22 @@ scissorsButton.addEventListener('click', () => {
 const resultsContainer = document.querySelector('.results');
 const content = document.createElement('div');
 
-const scoreContainer = document.querySelector('.score');
-const scoreContent = document.createElement('div');
+const theWordScore = document.querySelector('.scoreword');
+const scoreScore = document.createElement('div');
 
-scoreContent.textContent = `Score: ${playerScore}:${computerScore}`;
-scoreContainer.appendChild(scoreContent);
-// scoreContent.textContent = `${scoreKeeper()}`;
-// scoreContainer.appendChild(scoreContent);
+
+const scoreContainer = document.querySelector('.score');
+const computerContent = document.createElement('div');
+
+const youContent = document.createElement('div');
+youContent.textContent = `You: ${playerScore}`;
+scoreScore.textContent = `Score:`;
+computerContent.textContent = `Computer: ${computerScore}`;
+
+theWordScore.appendChild(scoreScore);
+scoreContainer.appendChild(youContent);
+scoreContainer.appendChild(computerContent);
+
 
 const resetContainer = document.querySelector('.resetbutton');
 const resetContent = document.createElement('button');
@@ -68,8 +77,12 @@ function playRound(playerSelection, computerSelection) {
     content.textContent = `${result}`;
     resultsContainer.appendChild(content);
     resultsContainer.style.display = 'flex';
-    scoreContent.textContent = `Score: ${playerScore}:${computerScore}`;
-    scoreContainer.appendChild(scoreContent);
+    // computerContent.textContent = `Score: ${playerScore}:${computerScore}`;
+  //  scoreContainer.appendChild(computerContent);
+  youContent.textContent = `You: ${playerScore}`;
+  computerContent.textContent = `Computer: ${computerScore}`;
+  scoreContainer.appendChild(youContent);
+  scoreContainer.appendChild(computerContent);
 
 
     // lists all ways a player can lose
@@ -84,8 +97,13 @@ function playRound(playerSelection, computerSelection) {
     content.textContent = `${result}`;
     resultsContainer.appendChild(content);
     resultsContainer.style.display = 'flex';
-    scoreContent.textContent = `Score: ${playerScore}:${computerScore}`;
-    scoreContainer.appendChild(scoreContent);
+  //  computerContent.textContent = `Score: ${playerScore}:${computerScore}`;
+    // scoreContainer.appendChild(computerContent);
+
+    youContent.textContent = `You: ${playerScore}`;
+    computerContent.textContent = `Computer: ${computerScore}`;
+    scoreContainer.appendChild(youContent);
+    scoreContainer.appendChild(computerContent);
 
 
   } else {
@@ -97,8 +115,13 @@ function playRound(playerSelection, computerSelection) {
     content.textContent = `${result}`;
     resultsContainer.appendChild(content);
     resultsContainer.style.display = 'flex';
-    scoreContent.textContent = `Score: ${playerScore}:${computerScore}`;
-    scoreContainer.appendChild(scoreContent);
+    // computerContent.textContent = `Score: ${playerScore}:${computerScore}`;
+    // scoreContainer.appendChild(computerContent);
+    youContent.textContent = `You: ${playerScore}`;
+    computerContent.textContent = `Computer: ${computerScore}`;
+    scoreContainer.appendChild(youContent);
+    scoreContainer.appendChild(computerContent);
+
 
 
   }
@@ -168,8 +191,10 @@ function playAgain() {
   // if (response == "yes") { // if response is yes, score counts are reset to zero and playRound function is called
     playerScore = 0;
     computerScore = 0;
-    scoreContent.textContent = `Score: ${playerScore}:${computerScore}`;
-    scoreContainer.appendChild(scoreContent);
+    youContent.textContent = `You: ${playerScore}`;
+    computerContent.textContent = `Computer: ${computerScore}`;
+    scoreContainer.appendChild(youContent);
+    scoreContainer.appendChild(computerContent);
     return;
   } // else { // if user inputs anything else an alert thanks them for playing
     // alert("Thanks for playing! Until next time.");
